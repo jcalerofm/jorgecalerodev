@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JORGE CALERO - Full-stack web developer</title>
+    <link  rel="icon"   href="devto.svg" type="image/ico" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/konpa/devicon@master/devicon.min.css">
+
+
+    <style>
+
+    html {
+  box-sizing: border-box;
+}
+body{
+    font-family: 'Roboto Condensed', sans-serif;
+
+}
+
+body p {
+  font-family: 'Lato', sans-serif;
+  color: #777;
+}
+body {
+  padding: 0;
+  margin: 0;
+  background-image: linear-gradient(rgba(0,0,0,1.0),rgba(0,0,0,0.2)), url(bg-01.jpeg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* _-_-_-_-__ morphing navigation styling __-_-_-_-_ */
+
+.header {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  position: relative;
+  justify-content: space-between;
+}
+
+.navigation {
+  width: 100px;
+  height: 100%;
+  display: block;
+  padding-right: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #ffffff;
+  border-radius: 0% 50% 350% 0%;
+  perspective: 800;
+  transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+  position: sticky;
+}
+
+.logo {
+  width: 149px;
+  height: 97px;
+  display: block;
+  position: absolute;
+  top: 8%;
+  left: 15%;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform: rotateY(-360deg);
+  transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+}
+
+.navigation__icon {
+  width: 55px;
+  height: 44px;
+  display: block;
+  position: relative;
+  top: 10%;
+  left: 35%;
+  background: hsla(312, 51%, 41%, 0.0);
+  cursor: pointer;
+  transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+}
+
+.navigation__icon .topBar {
+  width: 55px;
+  height: 2px;
+  display: block;
+  background: #f7082d;
+  position: absolute;
+  top: 10px;
+  transform: rotate(0);
+  transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+}
+
+.navigation__icon .middleBar {
+  width: 55px;
+  height: 2px;
+  display: block;
+  background: #f7082d;
+  position: absolute;
+  top: 20px;
+  transform: rotate(0);
+   transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+}
+
+.navigation__icon .bottomBar {
+  width: 35px;
+  height: 2px;
+  display: block;
+  background: #f7082d;
+  position: absolute;
+  top: 30px;
+  transform: rotate(0);
+  transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+}
+
+.navigation .navigation__ul {
+  float: right;
+  margin-top: 220px;
+  opacity: 0;
+  visibility: hidden;
+  transform: rotateY(-90deg) translateX(-300px);
+  transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+}
+
+.navigation .navigation__ul li {
+  list-style: none;
+  text-align: right;
+}
+
+.navigation .navigation__ul a {
+  display: block;
+  font-size: 30px;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #212529;
+  margin-bottom: 15px;
+}
+
+.navigation .navigation__ul a:hover {
+  color: hsl(185, 96%, 33%);
+}
+
+.navigation .navigation__social {
+  width: 100%;
+  height: 30px;
+  padding-right: 45px;
+  position: absolute;
+  bottom: 18%;
+}
+
+.navigation .navigation__social-ul {
+  float: right;
+  list-style: none;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: rotateY(-90deg) translateX(-300px);
+  transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+}
+
+.navigation .navigation__social-ul li {
+  display: inline-block;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(35px);
+  transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+}
+
+.navigation .social-icon {
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin-left: 15px;
+}
+
+
+.navigation-open {
+  width: 350px;
+  height: 100%;
+  display: block;
+  background: #ffffff;
+  position: absolute;
+  left: 0;
+  border-radius: 0% 1% 1% 0%;
+}
+
+.navigation-open .logo {
+  left: 68%;
+  transform: rotateY(0);
+}
+
+.navigation-open .navigation__icon {
+  left: 80%;
+}
+
+.navigation-open .navigation__ul {
+  opacity: 1;
+  visibility: visible;
+}
+
+.navigation-open .navigation__social-ul {
+  opacity: 1;
+  visibility: visible;
+}
+
+.navigation-open .topBar {
+  top: 21px;
+  transform: rotate(45deg);
+}
+
+.navigation-open .middleBar {
+  width: 0;
+  top: 22px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(30px);
+}
+
+.navigation-open .bottomBar {
+  width: 55px;
+  top: 21px;
+  transform: rotate(-45deg);
+}
+
+.navigation-open .navigation__ul {
+  transform: rotateY(0) translateX(0);
+}
+
+.navigation-open .navigation__social-ul {
+  transform: rotateY(0) translateX(0);
+}
+
+.navigation-open .navigation__social-ul li {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px);
+}
+
+.navigation-open .navigation__social-ul li:nth-child(1) {
+  transition-delay: .5s;
+}
+
+.navigation-open .navigation__social-ul li:nth-child(2) {
+  transition-delay: .46s;
+}
+
+.navigation-open .navigation__social-ul li:nth-child(3) {
+  transition-delay: .43s;
+}
+
+.navigation-open .navigation__social-ul li:nth-child(4) {
+  transition-delay: .4s;
+}
+.footer {
+  background: #F4F4F4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+  color: rgba(0,0,0,0.3);
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+.footer-links a {
+  color: black;
+  opacity: 0.15;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+.footer .fa-heart {
+  color: #D23333;
+}
+.nombre {
+  color: white;
+  text-align: right;
+  position: absolute;
+  right: 0%;
+  max-width: 500px;
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+#about {
+  background-color: white
+}
+.social-icon {
+  color: black;
+}
+.navigation .navigation__social-ul li a{
+  text-decoration: none;
+}
+
+.btn-ghost {
+  color: #4A4A4A;
+  border: 1px solid #4A4A4A;
+  width: 120px;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.btn-ghost:hover {
+  opacity: 1;
+}
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <header class="header d-flex">
+
+
+  <nav class="navigation">
+
+    <section class="logo"></section>
+
+    <section class="navigation__icon">
+      <span class="topBar"></span>
+      <span class="middleBar"></span>
+      <span class="bottomBar"></span>
+    </section>
+
+    <ul class="navigation__ul">
+      <li><a href="">HOME</a></li>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#recentwork">RECENT WORKS</a></li>
+      <li><a href="#contact">CONTACT ME</a></li>
+    </ul>
+
+    <section class="navigation__social">
+      <ul class="navigation__social-ul">
+        <li>
+          <a href="https://github.com/jcalerofm" target="_blank"><i class="fa fa-github social-icon"></i></a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/jorgecalero.fm/" target="_blank"><i class="fa fa-instagram social-icon"></i></a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/jcalerofm/" target="_blank"><i class="fa fa-linkedin social-icon"></i></a>
+        </li>
+      </ul>
+    </section>
+
+  </nav>
+
+  <div class="nombre mt-5 mr-5">
+    <h1 style="font-size: 150px;
+    letter-spacing: 8px;
+    font-weight: bold;">JORGE CALERO</h1>
+    <h3 style="margin-right: 13px;
+    font-size: 2.75rem;
+    letter-spacing: 2px;">Full-Stack web developer</h3>
+  </div>
+
+</header>
+
+<div class="aboutme">
+  <div class="text-center" id="about" style="padding-top: 50px; padding-bottom: 40px;">
+    <h1 style="padding: 25px; font-size: 55px">ABOUT</h1>
+    <img src="_DSC0034.jpg" class="img-fluid" style="width: 300px; height: 300px; border-radius: 50%">
+    <p style="font-size: 40px"><em>"I am Jorge!"</em></p>
+    <p class="container text-center" style="max-width: 850px;">After 14 years of experience in the tourism sector, I decided to take a leap in my career and make a training as a Full Stack web developer. I graduated in September 2019 at Le Wagon coding Bootcamp in Berlin and since then I'm constantly improving my skills working as a Teaching assistant for the new students. I'm always trying to grow up and learning new technologies and I look forward to continue learning and putting my knowledge into practice in a challenging and creative position.
+  I'm highly motivated and inspired to make a great career as web developer and create beautiful and useful digital products.</p>
+  <div class="container mt-5">
+    <h2>SKILLS</h2>
+      <div class="container text-center mb-3 mt-5">
+        <ul class="container d-flex text-center" style="color: #777; font-size:60px; list-style: none; justify-content: space-between;">
+          <div class="text-center"><li><i class="devicon-ruby-plain"></i></li><p style="font-size:14px">Ruby</p></div>
+          <div class="text-center"><li><i class="devicon-rails-plain"></i></li><p style="font-size:14px">Rails</p></div>
+          <div class="text-center"><li><i class="devicon-javascript-plain"></i></li><p style="font-size:14px">Javascript</p></div>
+          <div class="text-center"><li><i class="devicon-html5-plain"></i></li><p style="font-size:14px">HTML</p></div>
+          <div class="text-center"><li><i class="devicon-css3-plain"></i></li><p style="font-size:14px">CSS</p></div>
+          </ul>
+        <ul class="container d-flex text-center" style="color: #777; font-size:60px; list-style: none; justify-content: space-between;">
+          <div class="text-center"><li><i class="devicon-bootstrap-plain"></i></li><p style="font-size:14px">Bootstrap</p></div>
+          <div class="text-center"><li><i class="devicon-git-plain"></i></li><p style="font-size:14px">Git</p></div>
+          <div class="text-center"><li><i class="devicon-github-plain"></i></li><p style="font-size:14px">Github</p></div>
+          <div class="text-center"><li><i class="devicon-postgresql-plain"></i></li><p style="font-size:14px">PostgreSQL</p></div>
+          <div class="text-center"><li><i class="devicon-webpack-plain"></i></li><p style="font-size:14px">Webpack</p></div>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class=" text-center" id="recentwork" style="background: #efefef; padding-top: 50px; padding-bottom: 40px;">
+  <h1 style="padding: 25px; font-size: 55px">RECENT WORKS</h1>
+  <div class="container text-center d-flex row row-cols-1 row-cols-lg-3" style="margin: 0 auto">
+  <div class="col mb-4">
+    <div class="card">
+      <a class="card-block stretched-link text-decoration-none" href="https://www.conmiperrete.com" target="_blank">
+      <div class="view overlay">
+        <img class="card-img-top" src="1.png"
+          alt="Card image cap" style="opacity: 0.9;">
+        <a href="https://wwww.conmiperrete.com">
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">Con mi Perrete</h4>
+        <p class="card-text"><b>**Work in progress**</b> A Webapp to help people in Spain to find beaches and parks to enjoy them with their four legged friend, where users can review and add their own places so other users can discover them.</p>
+      </div>
+    </a>
+    </div>
+  </div>
+
+  <div class="col mb-4">
+    <div class="card">
+      <a class="card-block stretched-link text-decoration-none" href="http://www.many-hands.live" target="_blank">
+      <div class="view overlay">
+        <img class="card-img-top" src="2.png"
+          alt="Card image cap" style="opacity: 0.9;">
+        <a href="http://www.many-hands.live">
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">Many Hands</h4>
+        <p class="card-text">A platform created with three fellow students in the last two weeks of the Le Wagon Coding Bootcamp. This platform aims to connect events organizers with creative people from your local community.</p>
+      </div>
+    </a>
+    </div>
+  </div>
+
+  <div class="col mb-4">
+    <div class="card">
+    <a class="card-block stretched-link text-decoration-none" href="https://power-up-granttnarg.herokuapp.com/" target="_blank">
+      <div class="view overlay">
+        <img class="card-img-top" src="3.png"
+          alt="Card image cap" style="opacity: 0.9;">
+        <a href="www.power-up-granttnarg.herokuapp.com">
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">Power Up!</h4>
+        <p class="card-text">A funny Superpowers marketplace where you can rent, offer, create and review your favorites . Created with three fellow students during one week at Le Wagon coding bootcamp.</p>
+      </div>
+      </a>
+    </div>
+  </div>
+
+
+</div>
+</div>
+
+<div class=" text-center" id="contact" style="background: white; padding-top: 50px; padding-bottom: 40px;">
+  <h1 style="padding: 25px; font-size: 55px">CONTACT ME</h1>
+  <p class="container text-center" style="max-width: 850px;">Hey! You can contact me for any inquiry or just say hello! :) </p>
+  <!-- <form action="https://formspree.io/moqknyng" method="POST">
+    <div class="form-group">
+    <label for="exampleInputEmail1">Your Email</label>
+    <input type="email" name="_replyto">
+
+    <input type="text" name="name">
+    <input type="submit" value="Send">
+    </div>
+  </form> -->
+
+  <div class="col-md-8 container">
+    <form action="https://formspree.io/moqknyng" method="POST">
+    <div class="row">
+      <div class="col-sm-6 form-group">
+        <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+      </div>
+      <div class="col-sm-6 form-group">
+        <input class="form-control" id="email" name="_replyto" placeholder="Email" type="email" required>
+      </div>
+    </div>
+    <textarea class="form-control" id="comments" name="comments" placeholder="Message" rows="5"></textarea>
+    <div class="row pt-3">
+      <div class="col-md-12 form-group">
+        <button class="btn btn-ghost" type="submit" value="Send">Send</button>
+      </div>
+    </div>
+    </form>
+  </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="https://github.com/jcalerofm" target="_blank"><i class="fa fa-github"></i></a>
+    <a href="https://www.instagram.com/jorgecalero.fm/" target="_blank"><i class="fa fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/in/jcalerofm/" target="_blank"><i class="fa fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This website was made with <i class="fa fa-heart"></i> by myself
+  </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+
+
+
+     $(function() {
+   $(".navigation__icon").click(function() {
+     $(".navigation").toggleClass('navigation-open');
+   });
+ });
+
+
+
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script>
+  var scroll = new SmoothScroll('a[href*="#"]');
+</script>
+
+</body>
+</html>
